@@ -24,8 +24,9 @@ function Search() {
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state: RootState) => state.global.value);
-  const key = "AIzaSyAauIdmko8mUbrwBjdRzSgccFk0X73cKCU";
+  // const key = "AIzaSyAauIdmko8mUbrwBjdRzSgccFk0X73cKCU";
   // const key = "AIzaSyCEAvuKsmu42QESPGVUUhyoPGI_dFKVy0A";
+  const key = "AIzaSyCW2eeoBhNiTqWqgNtfOoeEu5FO6ldiRAQ";
 
   const kinds = {
     video: "youtube#video",
