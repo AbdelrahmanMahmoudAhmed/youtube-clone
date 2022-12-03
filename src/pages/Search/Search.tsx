@@ -24,14 +24,15 @@ function Search() {
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state: RootState) => state.global.value);
-  const key = "AIzaSyAauIdmko8mUbrwBjdRzSgccFk0X73cKCU";
-  // const key = "AIzaSyCEAvuKsmu42QESPGVUUhyoPGI_dFKVy0A";
+  // const key = "AIzaSyAauIdmko8mUbrwBjdRzSgccFk0X73cKCU";
+  const key = "AIzaSyCEAvuKsmu42QESPGVUUhyoPGI_dFKVy0A";
+
   const kinds = {
     video: "youtube#video",
     channel: "youtube#channel",
     playlist: "youtube#playlist",
   };
-  useEffect(() => {}, [pageToken]);
+
   const getNewResults = async () => {
     dispatch(turnOn());
 
@@ -52,6 +53,13 @@ function Search() {
       toast.error(err?.message);
     }
   };
+  useEffect(() => {
+    document.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        getNewResults();
+      }
+    });
+  }, []);
   const getLastResults = async () => {
     dispatch(turnOn());
     window.scrollTo({
@@ -73,30 +81,27 @@ function Search() {
     }
   };
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      dispatch(turnOn());
-      try {
-        const response: AxiosResponse = await api.get(
-          `/search?key=${key}&q=${search}&part=snippet&maxResults=5`
-        );
-        setItems(response?.data?.items);
-        setPageToken(response?.data?.nextPageToken);
-        dispatch(turnOff());
-      } catch (err: any) {
-        dispatch(turnOff());
-        toast.error(err?.message);
-      }
-    };
-
-    fetchVideos();
-  }, [search]);
+  const fetchVideos = async (word: string) => {
+    console.log("word", word);
+    dispatch(turnOn());
+    try {
+      const response: AxiosResponse = await api.get(
+        `/search?key=${key}&q=${word}&part=snippet&maxResults=5`
+      );
+      setItems(response?.data?.items);
+      setPageToken(response?.data?.nextPageToken);
+      dispatch(turnOff());
+    } catch (err: any) {
+      dispatch(turnOff());
+      toast.error(err?.message);
+    }
+  };
 
   return (
     <div className="search-page">
       {isLoading && <Loader />}
 
-      <Header setSearch={setSearch} />
+      <Header fetchVideos={fetchVideos} />
 
       {items.map((item: any, index) =>
         item?.id?.kind === kinds.video ? (

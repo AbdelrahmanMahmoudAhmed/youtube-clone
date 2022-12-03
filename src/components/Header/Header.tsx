@@ -8,7 +8,8 @@ import "./header.scss";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import SearchIcon from "@mui/icons-material/Search";
 interface Props {
-  setSearch: Dispatch<SetStateAction<string>>;
+  // setSearch: Dispatch<SetStateAction<string>>;
+  fetchVideos(word: string): void;
 }
 function Header(props: Props) {
   const [inputVal, setInputVal] = useState("");
@@ -16,7 +17,8 @@ function Header(props: Props) {
     setInputVal(e.currentTarget.value);
   };
   const getNewData = (): void => {
-    props.setSearch(inputVal);
+    // props.setSearch(inputVal);
+    props.fetchVideos(inputVal);
   };
   return (
     <header className="search-header">
@@ -52,6 +54,3 @@ function Header(props: Props) {
 }
 
 export default Header;
-// function setSearch(arg0: string) {
-//   throw new Error("Function not implemented.");
-// }
