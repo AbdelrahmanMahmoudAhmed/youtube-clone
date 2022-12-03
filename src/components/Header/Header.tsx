@@ -1,4 +1,5 @@
 import React, {
+  useEffect,
   Dispatch,
   SetStateAction,
   useState,
@@ -20,6 +21,13 @@ function Header(props: Props) {
     // props.setSearch(inputVal);
     props.fetchVideos(inputVal);
   };
+  // useEffect(() => {
+  //   document.addEventListener("keyup", (e) => {
+  //     if (e.key === "Enter") {
+  //       props.fetchVideos(inputVal);
+  //     }
+  //   });
+  // }, []);
   return (
     <header className="search-header">
       <div className="header-holder container">

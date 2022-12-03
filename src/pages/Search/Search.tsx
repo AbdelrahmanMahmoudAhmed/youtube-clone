@@ -24,15 +24,29 @@ function Search() {
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state: RootState) => state.global.value);
-  // const key = "AIzaSyAauIdmko8mUbrwBjdRzSgccFk0X73cKCU";
-  const key = "AIzaSyCEAvuKsmu42QESPGVUUhyoPGI_dFKVy0A";
+  const key = "AIzaSyAauIdmko8mUbrwBjdRzSgccFk0X73cKCU";
+  // const key = "AIzaSyCEAvuKsmu42QESPGVUUhyoPGI_dFKVy0A";
 
   const kinds = {
     video: "youtube#video",
     channel: "youtube#channel",
     playlist: "youtube#playlist",
   };
-
+  const fetchVideos = async (word: string) => {
+    console.log("word", word);
+    dispatch(turnOn());
+    try {
+      const response: AxiosResponse = await api.get(
+        `/search?key=${key}&q=${word}&part=snippet&maxResults=5`
+      );
+      setItems(response?.data?.items);
+      setPageToken(response?.data?.nextPageToken);
+      dispatch(turnOff());
+    } catch (err: any) {
+      dispatch(turnOff());
+      toast.error(err?.message);
+    }
+  };
   const getNewResults = async () => {
     dispatch(turnOn());
 
@@ -53,13 +67,7 @@ function Search() {
       toast.error(err?.message);
     }
   };
-  useEffect(() => {
-    document.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        getNewResults();
-      }
-    });
-  }, []);
+
   const getLastResults = async () => {
     dispatch(turnOn());
     window.scrollTo({
@@ -74,22 +82,6 @@ function Search() {
       setPageToken(response?.data?.nextPageToken);
       setPrevPageToken(response?.data?.prevPageToken);
 
-      dispatch(turnOff());
-    } catch (err: any) {
-      dispatch(turnOff());
-      toast.error(err?.message);
-    }
-  };
-
-  const fetchVideos = async (word: string) => {
-    console.log("word", word);
-    dispatch(turnOn());
-    try {
-      const response: AxiosResponse = await api.get(
-        `/search?key=${key}&q=${word}&part=snippet&maxResults=5`
-      );
-      setItems(response?.data?.items);
-      setPageToken(response?.data?.nextPageToken);
       dispatch(turnOff());
     } catch (err: any) {
       dispatch(turnOff());
