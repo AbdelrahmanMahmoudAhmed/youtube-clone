@@ -39,8 +39,18 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## About Displaying Project
+### Run `npm run install` 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Note: To install all packages in the project**
+<!-- You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ -->
+You can use the search and your search results are displayed.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you click on any video from the search results, you will be redirected to the video play page, from which you can return to the search page again.
+
+If you make a lot of queries, it may disable the service for 24 hours, because the key used is free.
+
+You can change the key through the variable - key - in the search page within the code.
+
+There is a code for another key inside the code that you can activate and use if needed.
