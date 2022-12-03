@@ -1,0 +1,30 @@
+.display {
+  background-color: #f1f3f4;
+  min-height: 100vh;
+  .player-holder {
+    text-align: center;
+    padding-top: 60px;
+  }
+  .lg {
+    display: block;
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+  .md {
+    display: none;
+    @media (max-width: 992px) and (min-width: 768px) {
+      display: block;
+    }
+  }
+  .sm {
+    display: none;
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+  .button-holder {
+    text-align: center;
+    padding-top: 70px;
+  }
+}

@@ -1,0 +1,17 @@
+.search-page {
+  background-color: #f1f3f4;
+  min-height: 100vh;
+  .button-holder {
+    padding: 50px;
+    text-align: center;
+    > button {
+      margin: 7px;
+    }
+  }
+  .no-results {
+    text-align: center;
+    margin-top: 20%;
+    font-size: 50px;
+    color: #888;
+  }
+}

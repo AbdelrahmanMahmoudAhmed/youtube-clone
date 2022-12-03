@@ -1,0 +1,79 @@
+.youtube-channel {
+  margin: 10px 0;
+  .channel-holder {
+    display: flex;
+    gap: 25px;
+    @media (max-width: 769px) {
+      gap: 10px;
+    }
+    .img {
+      //   cursor: pointer;
+      width: 40%;
+      //   overflow: hidden;
+      cursor: pointer;
+      overflow: hidden;
+
+      > img {
+        display: block;
+        // transform: scale(1.059, 1.138);
+        // -webkit-transform: scale(1.059, 1.138);
+        // -moz-transform: scale(1.059, 1.138);
+        // -ms-transform: scale(1.059, 1.138);
+        // -o-transform: scale(1.059, 1.138);
+        margin: auto;
+        width: 125px;
+        border-radius: 50%;
+        height: 125px;
+      }
+    }
+    .channel-content {
+      width: 60%;
+      .title {
+        margin-bottom: 30px;
+        @media (max-width: 1200px) {
+          margin-bottom: 15px;
+        }
+        @media (max-width: 769px) {
+          margin-bottom: 7px;
+        }
+        > h3 {
+          cursor: pointer;
+          font-weight: 500;
+          color: #222;
+          font-size: 28px;
+
+          @media (max-width: 1200px) {
+            font-size: 18px;
+          }
+          @media (max-width: 769px) {
+            margin-bottom: 2px;
+            font-size: 14px;
+          }
+        }
+        > p {
+          font-size: 16px;
+          margin-top: 5px;
+          @media (max-width: 1200px) {
+            font-size: 14px;
+          }
+          color: #888;
+          @media (max-width: 769px) {
+            font-size: 10px;
+          }
+        }
+      }
+      .description {
+        > p {
+          font-size: 14px;
+          @media (max-width: 1200px) {
+            font-size: 12px;
+          }
+          color: #888;
+          @media (max-width: 769px) {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
